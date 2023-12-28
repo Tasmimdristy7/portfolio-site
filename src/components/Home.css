@@ -1,0 +1,62 @@
+/* Home.css */
+
+.container {
+    height: 100vh;
+}
+
+.home-container {
+    margin-top: 150px;
+    /* Adjust the top margin as needed */
+    padding: 20px;
+    /* Adjust the padding as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #8495a6;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    /* Adjust the duration and easing as needed */
+}
+
+
+/* Home.css */
+
+
+/* ... other styles */
+
+.scroll-down-indicator {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    margin-top: 20px;
+}
+
+.scroll-down-indicator.animate {
+    opacity: 1;
+    animation: bounce 2s infinite;
+    /* You can customize the animation as needed */
+}
+
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
