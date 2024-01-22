@@ -1,21 +1,45 @@
-// App.js
 import React from 'react';
-import Header from './components/Header';
-import Home from './components/Home'; // Add this line
-// import About from './components/About';
-// import Projects from './components/Projects';
-// import Contact from './components/Contact';
+import { Text } from '@chakra-ui/react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import CustomNavbar from './Components/CustomNavbar';
+import Home from './Components/Home';
+import SkillsSection from './Components/SkillsSection.jsx';
+import Experience from './Components/Experience';
+import Projects from './Components/Projects'; 
+import Contact from './Components/ContactMe';
+import Footer from './Components/Footer';
+import ResearchWork from './Components/ResearchWork'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './App.css'; // Import your global styles
+
+import Intro from './Components/Intro';
+import { Heading } from '@chakra-ui/react'; // Import Heading from Chakra UI
 
 function App() {
   return (
-    <div>
-      { <Header /> }
-      <Home /> {/* Add this line */}
-      {/* <About />
+    <div className="app-container">
+      <CustomNavbar />
+      <Intro />
+      <SkillsSection  />
+     
+     
       <Projects />
-      <Contact /> */}
+      
+      
+      <Heading id='Experience' textAlign="center" className="work-experience-heading">
+        Work & Academia
+      </Heading>
+      <Text className='skills-description 'textAlign="center" marginBottom={35}marginTop={-15}>These are the Places I worked and Gathered Knowledge</Text>
+      {/* Add the Experience component */}
+      <Experience />
+      <ResearchWork></ResearchWork>
+      <Heading id="Tasmim" textAlign="center" className="work-experience-heading">
+        More About me?
+      </Heading>
+      <Home />
+      <Contact/>
+      <Footer/>
     </div>
   );
 }

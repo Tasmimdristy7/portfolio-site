@@ -1,0 +1,74 @@
+/* ContactMe.css */
+
+
+/* Style for the container box */
+
+.box-container {
+    max-width: 600px;
+    /* Adjust the maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* Style for the heading */
+
+.heading {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+
+/* Style for the contact info grid */
+
+.Socials {
+    margin-bottom: 10%;
+    margin-left: 50%;
+    size: 100%;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 1%;
+}
+
+
+/* Style for individual contact items */
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
+/* Style for icons */
+
+.icon {
+    margin-right: 0;
+}
+
+
+/* Style for email and GitHub links */
+
+.link {
+    text-decoration: none;
+    color: #2c3e50;
+    /* Adjust the color as needed */
+    font-weight: bold;
+}
+
+.icon-button {
+    color: #2c3e50;
+    /* Adjust the color as needed */
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.SocioIcon {
+    size: 100px;
+}

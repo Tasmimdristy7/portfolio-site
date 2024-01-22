@@ -1,0 +1,33 @@
+/* SkillsSection.css */
+
+
+/* You can customize the styles based on your design preferences */
+
+.skills-section {
+    margin-top: -50px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.skills-heading {
+    /* Fix the typo: change PX to px */
+    font-family: 'Raleway', sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    grid-area: auto;
+    line-height: 20px;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 20px;
+    /* Adjust as needed */
+}
+
+.skills-description {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #666;
+    margin-bottom: -1px;
+    margin-top: 10px;
+    /* Adjust as needed */
+}

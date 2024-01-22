@@ -1,87 +1,47 @@
 // Home.js
-import React, { useState, useEffect, useMemo } from 'react';
-import './Home.css'; // Import your CSS file
+import React from "react";
+import "./Home.css"; // Import your CSS file
+import yourPhoto from "./Pic1.png"; // Adjust the file extension based on your photo type
 
 const Home = () => {
-  const lines = useMemo(() => [
-    "Hi, I am Tasmim Rashid",
-    "I am a Software Test Engineer.",
-    "Besides that, I do so many other things too.",
-    "Let's take a stroll through my portfolio to see if our paths align.",
-  ], []);
-
-  const [visibleLine, setVisibleLine] = useState('');
-  const [lineIndex, setLineIndex] = useState(0);
-  const [animationPhase, setAnimationPhase] = useState('appearing');
-  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
-  const [animateScrollIndicator, setAnimateScrollIndicator] = useState(false);
-  const [shouldKeepAppearing, setShouldKeepAppearing] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!shouldKeepAppearing) {
-        clearInterval(interval);
-        setShowScrollIndicator(true);
-        return;
-      }
-
-      switch (animationPhase) {
-        case 'appearing':
-          if (visibleLine.length < lines[lineIndex].length) {
-            setVisibleLine((prevVisibleLine) =>
-              lines[lineIndex].slice(0, prevVisibleLine.length + 1)
-            );
-          } else {
-            setAnimationPhase('pausing');
-          }
-          break;
-
-        case 'pausing':
-          setTimeout(() => {
-            setAnimationPhase('disappearing');
-          }, 1000);
-          break;
-
-        case 'disappearing':
-          if (visibleLine.length > 0) {
-            setVisibleLine((prevVisibleLine) => prevVisibleLine.slice(0, -1));
-          } else {
-            setLineIndex((prevIndex) => (prevIndex + 1) % lines.length);
-            if (lineIndex === lines.length - 1) {
-              // Last line disappeared
-              setShouldKeepAppearing(false);
-            }
-            setAnimationPhase('appearing');
-          }
-          break;
-
-        default:
-          // Handle unexpected values
-          break;
-      }
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [visibleLine, lineIndex, lines, animationPhase, shouldKeepAppearing]);
-
-  // Handle the scroll down indicator animation
-  useEffect(() => {
-    if (showScrollIndicator) {
-      setAnimateScrollIndicator(true);
-    }
-  }, [showScrollIndicator]);
-
   return (
-    <div className="home-container">
-      <h1 className={animationPhase === 'disappearing' ? 'fade-out' : ''}>
-        {visibleLine}
-      </h1>
-      {showScrollIndicator && (
-        <div className={`scroll-down-indicator${animateScrollIndicator ? ' animate' : ''}`}>
-          {/* Use an arrow-down icon or any other indicator */}
-          <span className="arrow-down">&#9660;</span>
+    <div className="container" >
+      <div className="photo-card">
+        <img src={yourPhoto} alt="Your Name" className="photo" />
+      </div>
+      <div className="main-card">
+        <div className="profile-info">
+          <div className="name">TASMIM RASHID</div>
+          <div className="profession">
+            Software Test Engineer | Machine learning and Data Science
+            Enthusiast | Researcher | Aspiring Product Manager
+          </div>
+          <div className="description">
+            I am Tasmim Rashid, your friendly neighborhood Software Test
+            Engineer. I don't just find bugs; I also make sure to eliminate them
+            with precision - consider it bug hunting and shooting! At 24 years
+            old, I hold a degree in Computer Science and boast nearly four years
+            of experience as a Software Test Engineer. While I've had a brief
+            stint as a Software Developer, my true passion lies in research. As
+            advertised, I wear many hats. I have mastered the entire Software
+            Test life cycle and its associated skills, all while enjoying the
+            process. In addition to my professional pursuits, I delve into Data
+            Science and Machine Learning, creating projects that fuel my
+            learning journey. In my spare time, I engage in reading research
+            papers and articles. If you're exploring something interesting, feel
+            free to let me know. Beyond my tech interests, I am an avid consumer
+            of movies and series, a gamer, a reader, and someone who loves to
+            eat and chill with friends. I take solo trips annually, attempting
+            to infuse humor through my attempts at telling jokes. I have a deep
+            love for cricket, food, photography, and embracing new challenges.
+            That's a glimpse of who I am, and I'm excited to hear from you with
+            great news!
+          </div>
         </div>
-      )}
+        <div className="scroll-indicator-box">
+          {/* Your scroll indicator content */}
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,435 @@
+.skills__container {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.skills__box {
+    padding: 20px;
+    margin: 10px;
+    transition: all 0.3s ease-in-out;
+    background-color: cornsilk;
+    margin-bottom: 30px;
+    height: 200px;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    /* Add a border */
+    /* Add border-radius for rounded corners */
+}
+
+.skills__header {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 18px;
+    font-weight: bolder;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    cursor: pointer;
+    display: flex;
+}
+
+.title_css {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.skills__title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.skills__subtitle {
+    font-size: 18px;
+    color: #999;
+    font-family: 'Ralway', sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.skills__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.skills__data {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.skills__titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skills__name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.skills__number {
+    font-size: 16px;
+    color: #999;
+}
+
+.skills__bar {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.skills__percentage {
+    display: block;
+    height: 100%;
+    background-color: #333;
+}
+
+
+/* Specific styles for skill classes */
+
+.skills__python {
+    width: 95%;
+}
+
+.skills__java {
+    width: 80%;
+}
+
+.skills__html {
+    width: 90%;
+}
+
+.skills__js {
+    width: 75%;
+}
+
+.skills__react {
+    width: 85%;
+}
+
+.skills__intro-ml {
+    width: 60%;
+}
+
+.skills__basic-stats {
+    width: 55%;
+}
+
+.skills__data-cleaning {
+    width: 50%;
+}
+
+.skills__data-viz {
+    width: 50%;
+}
+
+.skills__intro-nn {
+    width: 45%;
+}
+
+.skills__basic-sql {
+    width: 40%;
+}
+
+.skills__node {
+    width: 80%;
+}
+
+.skills__firebase {
+    width: 60%;
+}
+
+.skills__git {
+    width: 90%;
+}
+
+.skills__linux {
+    width: 910%;
+}
+
+.skills__communication {
+    width: 95%;
+}
+
+.skills__problem-solving {
+    width: 85%;
+}
+
+.skills__leadership {
+    width: 80%;
+}
+
+.skills__analytical-ability {
+    width: 90%;
+}
+
+.skills__critical-thinking {
+    width: 85%;
+}
+
+.skills__release-management {
+    width: 80%;
+}
+
+
+/* Add this to your Skill.css file or your preferred styling file */
+
+
+/* Software Testing Skills */
+
+.skills__manual-testing {
+    width: 90%;
+    /* Adjust the percentage as needed */
+}
+
+.skills__automated-testing {
+    width: 90%;
+}
+
+.skills__selenium {
+    width: 90%;
+}
+
+.skills__cypress {
+    width: 85%;
+}
+
+.skills__playwright {
+    width: 55%;
+}
+
+.skills__testing {
+    width: 85%;
+}
+
+.skills__api-testing {
+    width: 70%;
+}
+
+.skills__performance-testing {
+    width: 85%;
+}
+
+.skills__security-testing {
+    width: 60%;
+}
+
+.skills__mobile-testing {
+    width: 65%;
+}
+
+.skills__test-framework-design {
+    width: 90%;
+}
+
+.skills__test-strategy {
+    width: 95%;
+}
+
+.skills__ci-cd {
+    width: 40%;
+}
+
+.skills__ux-testing {
+    width: 90%;
+}
+
+.skills__usability-testing {
+    width: 85%;
+}
+
+.skills__user-centric-design {
+    width: 90%;
+}
+
+.skills__user-feedback {
+    width: 85%;
+}
+
+.skills__test-case-writing {
+    width: 95%;
+}
+
+.skills__debugging {
+    width: 90%;
+}
+
+.skills__attention-to-detail {
+    width: 95%;
+}
+
+
+/* Product Development & Tools Skills */
+
+.skills__requirements-gathering {
+    width: 80%;
+}
+
+.skills__wireframing-prototyping {
+    width: 75%;
+}
+
+.skills__agile {
+    width: 70%;
+}
+
+.skills__user-stories {
+    width: 75%;
+}
+
+.skills__backlog-management {
+    width: 70%;
+}
+
+.skills__ui-ux-design {
+    width: 25%;
+}
+
+.skills__jira {
+    width: 85%;
+}
+
+.skills__web3-knowledge {
+    width: 35%;
+}
+
+.skills__postman {
+    width: 75%;
+}
+
+.skills__git {
+    width: 90%;
+}
+
+.skills__linux {
+    width: 55%;
+}
+
+
+/* Communication & Other Skills */
+
+.skills__project-management {
+    width: 70%;
+}
+
+.skills__release-management {
+    width: 75%;
+}
+
+.skills__communication {
+    width: 95%;
+}
+
+.skills__problem-solving {
+    width: 85%;
+}
+
+.skills__leadership {
+    width: 80%;
+}
+
+.skills__analytical-ability {
+    width: 90%;
+}
+
+.skills__critical-thinking {
+    width: 85%;
+}
+
+
+/* Programming Languages Skills */
+
+.skills__python {
+    width: 90%;
+}
+
+.skills__java {
+    width: 50%;
+}
+
+.skills__html {
+    width: 80%;
+}
+
+.skills__js {
+    width: 30%;
+}
+
+.skills__react {
+    width: 20%;
+}
+
+
+/* AI & Data Science Skills */
+
+.skills__intro-ml {
+    width: 60%;
+}
+
+.skills__basic-stats {
+    width: 55%;
+}
+
+.skills__data-cleaning {
+    width: 50%;
+}
+
+.skills__data-viz {
+    width: 50%;
+}
+
+.skills__intro-nn {
+    width: 45%;
+}
+
+.skills__basic-sql {
+    width: 40%;
+}
+
+.skills__python1 {
+    width: 40%;
+}
+
+
+/* Software Development & Web3 Skills */
+
+.skills__python-web3 {
+    width: 30%;
+}
+
+.skills__html-css {
+    width: 60%;
+}
+
+.skills__db-mysql-mongodb {
+    width: 40%;
+}
+
+.skills__web3-knowledge {
+    width: 30%;
+}
+
+
+/* Add more styles for other skills as needed */
+
+.skills__hide {
+    display: none;
+}
+
+.skills__icon {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.skills__manual-testing {
+    width: 90%;
+    /* Change percentage as needed */
+}

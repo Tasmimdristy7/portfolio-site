@@ -1,0 +1,104 @@
+/* Intro.css */
+
+.intro-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: cornsilk;
+    margin-bottom: 0%;
+}
+
+.greeting {
+    /* Fix the typo: change PX to px */
+    font-family: 'Raleway', sans-serif;
+    font-size: 90px;
+    font-weight: 700;
+    grid-area: auto;
+    line-height: 40px;
+    text-align: left;
+    /* Specify 'sans-serif' as a fallback */
+}
+
+.intro-text {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    grid-area: auto;
+    line-height: 32px;
+    margin-top: 3%;
+    margin-bottom: 0px;
+    margin-left: 5em;
+    text-align: center;
+    justify-content: center;
+    margin-right: 5em;
+}
+
+
+/* Remove background color and margin-top from body */
+
+body {
+    background: cornsilk;
+    margin: 0;
+}
+
+.scroll-indicator-box {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.arrows {
+    width: 60px;
+    height: 72px;
+    position: absolute;
+    align-items: center;
+    bottom: 22%;
+}
+
+.arrows path {
+    stroke: #090909;
+    fill: transparent;
+    stroke-width: 1px;
+    animation: arrow 2s infinite;
+}
+
+@keyframes arrow {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.arrows path.a1 {
+    animation-delay: -1s;
+}
+
+.arrows path.a2 {
+    animation-delay: -0.5s;
+}
+
+.arrows path.a3 {
+    animation-delay: 0s;
+}
+
+.fade-in {
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

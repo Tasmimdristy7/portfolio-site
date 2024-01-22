@@ -1,0 +1,67 @@
+/* Experience.css */
+
+.experience-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    margin-bottom: 10%;
+}
+
+.divider {
+    width: 1px;
+    background-color: #ccc;
+    margin: 0 20px;
+}
+
+.flex-section {
+    flex: 1;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 0;
+    background-color: cornsilk;
+    margin: 0 10px;
+}
+
+.work-experience-heading,
+.education-heading {
+    color: #000000;
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    font-weight: bolder;
+    line-height: 20px;
+    margin-bottom: 40px;
+}
+
+.accordion-item {
+    margin-bottom: 20px;
+}
+
+.company-name {
+    font-size: 30px;
+    color: #333;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-weight: 500;
+}
+
+.job-title {
+    font-weight: bold;
+    font-family: 'Libre Baskerville', sans-serif;
+}
+
+.details {
+    font-family: 'Libre Baskerville', sans-serif;
+    color: #1f1e1e;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.accordion-panel {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    color: #3a3838;
+}
