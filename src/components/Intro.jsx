@@ -21,7 +21,7 @@ const Intro = () => {
       className="intro-container"
     >
       {/* Use motion.div for animation on the greeting */}
-      <motion.div className="greeting" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 3 }}>
+      <motion.div className="greeting" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
         Hiii, This is Tasmim.
       </motion.div>
       <Text
