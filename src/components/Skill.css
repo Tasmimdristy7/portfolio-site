@@ -433,3 +433,26 @@
     width: 90%;
     /* Change percentage as needed */
 }
+
+@media (max-width: 768px) {
+    .skills__name {
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .skills__bar {
+        height: 7px;
+        background-color: #eee;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .skills__data {
+        padding: 7px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .skills__number {
+        font-size: 10px;
+        color: #5b5b5b;
+        font-weight: bolder;
+    }
+}

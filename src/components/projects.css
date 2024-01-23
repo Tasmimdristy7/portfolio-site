@@ -208,5 +208,23 @@
     
     .tab-button[aria-selected="true"] {
         color: #000000;
+        border: #333;
+        border-radius: 10%;
         /* Change the text color for the active tab */
+        box-shadow: 0 2px 4px rgba(143, 141, 141, 0.2);
+        /* Add box shadow to the active tab */
+    }
+    
+    @media only screen and (max-width: 800px) {
+        .project-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: -5px;
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            margin-bottom: 20px;
+        }
     }

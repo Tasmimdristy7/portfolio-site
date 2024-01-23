@@ -9,6 +9,7 @@ import Experience from './Components/Experience';
 import Projects from './Components/Projects'; 
 import Contact from './Components/ContactMe';
 import Footer from './Components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ResearchWork from './Components/ResearchWork'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'; // Import your global styles

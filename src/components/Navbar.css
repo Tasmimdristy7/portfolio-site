@@ -1,5 +1,16 @@
 /* Navbar.css */
 
+
+/* Navbar.css */
+
+.custom-navbar.visible .navbar-brand {
+    opacity: 1;
+}
+
+.name1 {
+    width: fit-content;
+}
+
 .custom-navbar {
     font-family: 'Raleway', sans-serif;
     opacity: 0;
@@ -7,9 +18,11 @@
     height: 100px;
     background-color: cornsilk;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
     /* Adjust the font size as needed */
     margin-bottom: auto;
+    margin-left: -15.5%;
+    margin-top: 1%;
     /* Add margin to the bottom of the navbar */
 }
 
@@ -70,36 +83,6 @@
 
 
 /* Dynamic styling based on tab names */
-
-.about {
-    color: #33ff57;
-}
-
-.projects {
-    color: #5733ff;
-}
-
-.work-experience {
-    color: #ff5733;
-}
-
-.research {
-    color: #33ff57;
-}
-
-.expertise {
-    color: #5733ff;
-}
-
-.research {
-    color: #33ff57;
-    /* Adjust the color as needed */
-}
-
-.expertise {
-    color: #5733ff;
-    /* Adjust the color as needed */
-}
 
 .nav-item:hover {
     opacity: 0.7;
@@ -166,19 +149,64 @@
     }
 }
 
+
+/* Navbar.css */
+
+
+/* Hamburger menu styles */
+
 @media (max-width: 768px) {
-    .navbar-nav {
-        width: 100%;
-        /* Full width for smaller screens */
+    .custom-navbar {
+        font-family: 'Raleway', sans-serif;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        height: 100px;
+        background-color: cornsilk;
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: -81%;
+        margin-left: 5.5%;
+        margin-top: 1%;
+        justify-content: end;
     }
-    .nav-item {
-        margin-right: 0;
-        /* Remove right margin for smaller screens */
-        margin-bottom: 10px;
-        /* Add bottom margin for spacing */
+    .navbar-toggler-icon {
+        background-color: cornsilk;
+        /* Set the color of the hamburger icon */
+    }
+    .name1 {
+        margin-right: 10%;
+        /* Remove margin on smaller screens */
+    }
+    .mobile-menu-open {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: rgb(13, 13, 13);
+        /* Set the background color for mobile menu */
+        position: absolute;
+        top: 56px;
+        /* Adjust the top position as needed based on your header's height */
+        left: 0;
+        z-index: 1000;
     }
     .nav-link {
-        padding: 0.5rem;
-        /* Adjust padding for smaller screens */
+        color: #ffffff;
+        /* Set the text color */
+        font-weight: bold;
+        /* Set the font weight */
+        padding: 10px 15px;
+        /* Adjust padding as needed */
+        border-bottom: 1px solid #555;
+        /* Add a border between mobile menu items */
+    }
+    .nav-link:hover,
+    .nav-link.active {
+        color: #202020;
+        /* Set the color for hover and active states */
+    }
+    .line {
+        display: none;
+        /* Hide the underline for mobile */
     }
 }
