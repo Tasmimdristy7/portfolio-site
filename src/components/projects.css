@@ -215,16 +215,45 @@
         /* Add box shadow to the active tab */
     }
     
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 765px) {
         .project-card {
             border: 1px solid #ccc;
             border-radius: 8px;
             overflow: hidden;
             padding: -5px;
-            width: 300px;
+            width: 250px;
             margin: 0 auto;
             text-align: center;
             transition: transform 0.3s ease-in-out;
             margin-bottom: 20px;
+            margin-right: 10%;
+        }
+        .project-container {
+            /* margin: 0 auto; */
+            max-width: 834px;
+            padding: -10px;
+            margin-bottom: 2%;
+            MARGIN-LEFT: 10%;
+            WIDTH: fit-content;
+        }
+        .projects-heading {
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            font-weight: bolder;
+            grid-area: auto;
+            line-height: 20px;
+            margin-bottom: 7%;
+            justify-content: left;
+            margin-left: -65.5%;
+        }
+        .skills-description {
+            font-family: 'Libre Baskerville', sans-serif;
+            font-size: 10px;
+            font-weight: bolder;
+            color: #666;
+            margin-bottom: -1px;
+            margin-top: 1rem;
+            margin-left: 8%;
+            margin-right: 38%;
         }
     }

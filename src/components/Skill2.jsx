@@ -86,7 +86,7 @@ const Skill = () => {
     'Software Testing': faBugSlash,
     'Software Development': faLaptopCode,
     'AI & Data Science': faBrain,
-    'Product Developmet & Tools': faTools,
+    'Product Development & Tools': faTools,
     'Communtication & other': faMagicWandSparkles,
     // Add more mappings as needed
   };

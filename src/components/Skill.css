@@ -436,7 +436,7 @@
 
 @media (max-width: 768px) {
     .skills__name {
-        font-size: 10px;
+        font-size: 20px;
         font-weight: bold;
     }
     .skills__bar {
@@ -454,5 +454,35 @@
         font-size: 10px;
         color: #5b5b5b;
         font-weight: bolder;
+    }
+    .skills__container {
+        width: 200%;
+        height: 100%;
+        margin: 0 auto;
+        padding: 70px;
+        box-sizing: border-box;
+    }
+    .skills__content {
+        margin-bottom: 20px;
+        width: 200%;
+        /* Adjust spacing between categories */
+    }
+    .skills__title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .skills__box {
+        padding: 20px;
+        margin: 10px;
+        transition: all 0.3s ease-in-out;
+        background-color: cornsilk;
+        margin-bottom: 30px;
+        height: 200px;
+        font-family: 'Libre Baskerville', sans-serif;
+        font-size: 20px;
+        font-weight: bolder;
+        width: fit-content;
+        /* Add a border */
+        /* Add border-radius for rounded corners */
     }
 }

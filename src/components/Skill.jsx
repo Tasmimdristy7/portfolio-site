@@ -63,14 +63,14 @@ const Skill = () => {
     'Programming Languages': faCode,
     'Software Testing': faBugSlash,
     'Software Development': faLaptopCode,
-    'AI & Data Science': faBrain,
-    'Product Developmet & Tools': faTools,
+    'AI & Data Science (Beginner)': faBrain,
+    'Product Development & Tools': faTools,
     'Communtication & other': faMagicWandSparkles,
     // Add more mappings as needed
   };
 
   return (
-    <div className="skills__container" >
+    <div className="skills__container" id='Skills'>
       <SimpleGrid columns={1} spacing={10}>
         {skillsData.map((category, index) => (
           <Box key={index} className={`skills__content ${openDrawerIndex === index ? 'skills__open' : ''}`}>
