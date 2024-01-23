@@ -68,7 +68,7 @@
 
 @media only screen and (max-width: 800px) {
     .company-name {
-        font-size: 18px;
+        font-size: 10px;
         color: #333;
         font-family: 'Libre Baskerville', sans-serif;
         font-weight: 700;
@@ -81,5 +81,10 @@
         font-weight: bold;
         margin-top: -1%;
         margin-bottom: 5%;
+    }
+    .job-title {
+        font-size: 8px;
+        font-weight: bold;
+        font-family: 'Libre Baskerville', sans-serif;
     }
 }

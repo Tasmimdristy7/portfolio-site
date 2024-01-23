@@ -10,7 +10,7 @@ const ExperienceItem = ({ icon, companyName, jobTitle, date, description }) => (
       {icon}
       <Box>
         <span className="company-name">{companyName}</span>
-        <Box fontWeight="bold">{jobTitle}</Box>
+        <Box className=' .job-title'>{jobTitle}</Box>
       </Box>
     </Box>
     <Box textAlign="right" ml="auto">
@@ -67,7 +67,7 @@ const Experience = () => {
         <ExperienceItem
           icon={<FontAwesomeIcon icon={faGraduationCap} size="2x" style={{ marginRight: '5px', marginTop: '-24px' }} />}
           companyName="Brac University"
-          jobTitle="BSc in Computer Science"
+          jobTitle="BSc in Computer Science" 
           date="June'17 - December'21"
           description=""
         />
