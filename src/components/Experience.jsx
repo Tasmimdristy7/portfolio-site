@@ -68,7 +68,7 @@ const Experience = () => {
           icon={<FontAwesomeIcon icon={faGraduationCap} size="2x" style={{ marginRight: '5px', marginTop: '-24px' }} />}
           companyName="Brac University"
           jobTitle="BSc in Computer Science"
-          date="July'19 - April'22"
+          date="June'17 - December'21"
           description=""
         />
       </Box>
