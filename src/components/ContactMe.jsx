@@ -58,7 +58,7 @@ const ContactMe = () => {
             variant="ghost"
             className="icon-button"
           />
-          <Link href="https://drive.google.com/file/d/1emRvYN25pMZdQu2Ri1u2VuLx9FP_wdTC/view?usp=sharing" className="link" target="_blank" rel="noopener noreferrer">
+          <Link href="https://drive.google.com/drive/u/0/folders/1k-vl6YcExhuCSUKRsiYmiPamynWoZMA1" className="link" target="_blank" rel="noopener noreferrer">
             Download Resume
           </Link>
         </Box>
