@@ -34,7 +34,7 @@ function App() {
       <Text className='skills-description 'textAlign="center" marginBottom={35}marginTop={-15}>These are the Places I worked and Gathered Knowledge</Text>
       {/* Add the Experience component */}
       <Experience />
-      <ResearchWork></ResearchWork>
+      {/* <ResearchWork></ResearchWork> */}
       <Heading id="Tasmim" textAlign="center" className="work-experience-heading">
         More About me?
       </Heading>

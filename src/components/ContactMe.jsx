@@ -73,7 +73,7 @@ const ContactMe = () => {
             variant="ghost"
             className="icon-button"
           />
-          <Text fontSize="sm">Preferred Timezone :(Pacific, Eastern)</Text>
+          <Text fontSize="10px" fontWeight='bold'>Preferred Timezone: (Pacific, Eastern)</Text>
         </Box>
       </Flex>
 

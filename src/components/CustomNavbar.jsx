@@ -42,10 +42,10 @@ const CustomNavbar = () => {
         </Nav>
         <Nav>
           {[
-            { tab: 'Skills', link: '#Skills' }, // Update the link for 'Skills'
+            { tab: 'Skills', link: '#Skill' }, // Update the link for 'Skills'
             { tab: 'Projects', link: '#projects' },
             { tab: 'Work & Academia', link: '#Experience' },
-            { tab: 'Research Work', link: '#research' },
+            // { tab: 'Research Work', link: '#research' },
             { tab: 'Contact', link: '#contact' },
           ].map(({ tab, link }) => (
             <Nav.Item key={tab}>

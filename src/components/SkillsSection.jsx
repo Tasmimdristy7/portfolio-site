@@ -7,7 +7,7 @@ import './Experience.css';
 
 const SkillsSection = () => {
   return (
-    <div className="skills-section">
+    <div className="skills-section" id='Skill'>
       <Box textAlign="center" marginBottom="4" alignItems="center">
         <Heading className="skills-heading">Skills</Heading>
         <Text className="skills-description">

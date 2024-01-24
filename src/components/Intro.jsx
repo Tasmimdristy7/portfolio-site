@@ -66,7 +66,7 @@ const Intro = () => {
       </Flex>
       <Box className="scroll-indicator-box" mt={4} mb={4}>
         <Link
-          href="#demo" // Adjust the href as needed
+          href="#Skill" // Adjust the href as needed
           className={`scroll-indicator${animateScrollIndicator ? ' animate' : ''}`}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
