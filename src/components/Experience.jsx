@@ -4,7 +4,7 @@ import './Experience.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCookie, faCloud, faNotesMedical, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
-const ExperienceItem = ({ icon, companyName, jobTitle, date, description }) => (
+const ExperienceItem = ({ icon, companyName, jobTitle, date, description ,location}) => (
   <Box className="accordion-item">
     <Box flex="1" textAlign="left" display="flex" alignItems="center">
       {icon}
@@ -13,6 +13,8 @@ const ExperienceItem = ({ icon, companyName, jobTitle, date, description }) => (
         <Box className=' .job-title'>{jobTitle}</Box>
       </Box>
     </Box>
+    <Box className='details'
+    textAlign="right" ml="20px" mt="20px" >{location}</Box>
     <Box textAlign="right" ml="auto">
       <Box className="details">{date}</Box>
     </Box>
@@ -37,6 +39,7 @@ const Experience = () => {
           companyName="Snickerdoodle Labs"
           jobTitle="Software Test Engineer"
           date="June 2022 - Present"
+          location="Sans Fransico,USA"
           description=""
         />
 
@@ -44,6 +47,7 @@ const Experience = () => {
           icon={<FontAwesomeIcon icon={faCloud} size="2x" style={{ marginRight: '5px', marginTop: '-24px' }} />}
           companyName="Klover Cloud"
           jobTitle="Software Test Engineer"
+          location="Dhaka,Bangladesh"
           date="Nov 2021 - Nov 2022"
           description=""
         />
@@ -52,6 +56,7 @@ const Experience = () => {
           icon={<FontAwesomeIcon icon={faNotesMedical} size="2x" style={{ marginRight: '5px', marginTop: '-24px' }} />}
           companyName="Shastho Limited"
           jobTitle="Software QA Engineer"
+          location="Dhaka,Bangladesh"
           date="Jul'20 - June'21"
           description=""
         />
@@ -68,6 +73,7 @@ const Experience = () => {
           icon={<FontAwesomeIcon icon={faGraduationCap} size="2x" style={{ marginRight: '5px', marginTop: '-24px' }} />}
           companyName="Brac University"
           jobTitle="BSc in Computer Science" 
+          location="Dhaka,Bangladesh"
           date="June'17 - December'21"
           description=""
         />

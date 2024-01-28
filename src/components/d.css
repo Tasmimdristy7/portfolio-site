@@ -18,10 +18,10 @@
     font-family: 'Libre Baskerville', sans-serif;
     font-size: 20px;
     font-weight: bolder;
+    border: 1px solid #000000;
     padding: 10px;
     margin: 10px;
     transition: all 0.3s ease-in-out;
-    background-color: cornsilk;
     margin-bottom: 30px;
 }
 
@@ -33,18 +33,13 @@
     cursor: pointer;
 }
 
-.title_css {
-    margin-top: -30px;
-    margin-left: 50px;
-    margin-right: 10px;
-}
-
 
 /* Add the rest of your existing styles here... */
 
 .skills__title {
     font-size: 24px;
     font-weight: bold;
+    margin: 0;
 }
 
 .skills__subtitle {
@@ -147,6 +142,5 @@
 
 .skills__icon {
     margin-right: 10px;
-    margin-top: 10px;
     /* Adjust margin as needed */
 }
