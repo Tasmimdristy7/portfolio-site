@@ -1,7 +1,7 @@
 /* Add this to your Skill.css file or your preferred styling file */
 
 .skills__container {
-    width: 100%;
+    width: 115%;
     /* Set the desired width */
     max-width: 1200px;
     /* Optional: Set a maximum width for responsiveness */
@@ -9,7 +9,7 @@
     /* Set the desired height */
     margin: 0 auto;
     /* Center the container */
-    padding: 20px;
+    padding: 70px;
     /* Add padding as needed */
     /* Include padding and border in the total width */
 }
