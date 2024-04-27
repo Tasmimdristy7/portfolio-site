@@ -16,8 +16,8 @@ const Intro = () => {
   return (
     <Flex
       direction={{ base: 'column', md: 'column', lg: 'column', xl: 'row' }} // Adjust the breakpoints as needed
-      align="center"
-      justify="center"
+      align="left"
+      justify="left"
       className="intro-container"
     >
       {/* Use motion.div for animation on the greeting */}
@@ -25,7 +25,7 @@ const Intro = () => {
         Hiii, This is Tasmim.
       </motion.div>
       <Text
-        textAlign="center"
+        textAlign="left"
         className={`intro-text ${animateScrollIndicator ? 'fade-in' : ''}`}
         mt={{ base: 4, md: 4, lg: 0, xl: 0 }} // Adjust the spacing as needed
       >
