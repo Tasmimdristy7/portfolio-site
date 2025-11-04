@@ -38,7 +38,7 @@ const Experience = () => {
           icon={<FontAwesomeIcon icon={faCookie} size="2x" style={{ marginRight: '5px', marginTop: '-24px' }} />}
           companyName="Snickerdoodle Labs"
           jobTitle="Software Test Engineer"
-          date="June 2022 - Present"
+          date="June 2022 - November 2024"
           location="Sans Fransico,USA"
           description=""
         />
