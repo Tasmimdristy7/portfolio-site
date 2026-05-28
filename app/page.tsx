@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import SwipeCard from "./components/SwipeCard";
 import {
@@ -160,53 +161,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="persona-card-grid" aria-label="Choose a persona">
-            {personas.map((item, i) => {
-              const Icon = item.icon;
-              const meta = modeMeta[item.id];
-              const route = cardRoutes[item.id];
-
-              return (
-                <div key={item.id} className="card-snap-section">
-                  <SwipeCard route={route} cardIndex={i}>
-                  <button
-                    className={`landing-persona-card ${item.accent}`}
-                    type="button"
-                    aria-label={`${item.label}: ${item.landingSubtitle}`}
-                    onClick={() => {
-                    if (route) router.push(route);
-                  }}
-                  >
-                    <span className="mode-card-header">
-                      <span className="mode-title-stack">
-                        <span>{meta.mode}</span>
-                        <span className="mode-role">{meta.role}</span>
-                      </span>
-                      {item.id === "research" ? (
-                        <span className="academic-ticker" aria-hidden="true">
-                          paper
-                          <strong className="academic-number-blip">1</strong>
-                        </span>
-                      ) : null}
-                    </span>
-                    <span className="persona-card-copy">
-                      <strong>{item.label}</strong>
-                      <small>{item.landingSubtitle}</small>
-                    </span>
-                    <ModePreview id={item.id} icon={Icon} />
-                    <span className="mode-signal">
-                      <span />
-                      {meta.signal}
-                    </span>
-                    <span className="card-cta">
-                      Select <ArrowRight size={17} aria-hidden="true" />
-                    </span>
-                  </button>
-                  </SwipeCard>
-                </div>
-              );
-            })}
-          </div>
+          <CardGrid personas={personas} modeMeta={modeMeta} cardRoutes={cardRoutes} router={router} />
           <blockquote className="hero-quote">
             <p>&ldquo;In all chaos, there is a cosmos; in all disorder, a secret order.&rdquo;</p>
             <footer>That&apos;s where I thrive.</footer>
@@ -214,6 +169,107 @@ export default function Home() {
         </div>
       </section>
     </main>
+  );
+}
+
+function CardGrid({ personas, modeMeta, cardRoutes, router }: {
+  personas: { id: PersonaId; accent: string; label: string; landingSubtitle: string; icon: Persona["icon"] }[];
+  modeMeta: Record<PersonaId, { mode: string; role: string; signal: string }>;
+  cardRoutes: Partial<Record<PersonaId, string>>;
+  router: ReturnType<typeof useRouter>;
+}) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || !isMobile) return;
+    const onScroll = () => {
+      const index = Math.round(el.scrollLeft / el.clientWidth);
+      setActiveIndex(index);
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [isMobile]);
+
+  const cardContent = (item: typeof personas[0], i: number) => {
+    const Icon = item.icon;
+    const meta = modeMeta[item.id];
+    return (
+      <button
+        className={`landing-persona-card ${item.accent}`}
+        type="button"
+        aria-label={`${item.label}: ${item.landingSubtitle}`}
+        onClick={() => { const route = cardRoutes[item.id]; if (route) router.push(route); }}
+      >
+        <span className="mode-card-header">
+          <span className="mode-title-stack">
+            <span>{meta.mode}</span>
+            <span className="mode-role">{meta.role}</span>
+          </span>
+          {item.id === "research" ? (
+            <span className="academic-ticker" aria-hidden="true">
+              paper<strong className="academic-number-blip">1</strong>
+            </span>
+          ) : null}
+        </span>
+        <span className="persona-card-copy">
+          <strong>{item.label}</strong>
+          <small>{item.landingSubtitle}</small>
+        </span>
+        <ModePreview id={item.id} icon={Icon} />
+        <span className="mode-signal"><span />{meta.signal}</span>
+        <span className="card-cta">Select <ArrowRight size={17} aria-hidden="true" /></span>
+      </button>
+    );
+  };
+
+  if (isMobile) {
+    return (
+      <div className="carousel-wrapper" aria-label="Choose a persona">
+        <div className="carousel-track" ref={scrollRef}>
+          {personas.map((item, i) => (
+            <div key={item.id} className="carousel-slide">
+              {cardContent(item, i)}
+            </div>
+          ))}
+        </div>
+        <div className="carousel-dots" aria-hidden="true">
+          {personas.map((_, i) => (
+            <button
+              key={i}
+              className={`carousel-dot${i === activeIndex ? " active" : ""}`}
+              onClick={() => {
+                scrollRef.current?.scrollTo({ left: i * scrollRef.current.clientWidth, behavior: "smooth" });
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="persona-card-grid" aria-label="Choose a persona">
+      {personas.map((item, i) => {
+        const route = cardRoutes[item.id];
+        return (
+          <div key={item.id} className="card-snap-section">
+            <SwipeCard route={route} cardIndex={i}>
+              {cardContent(item, i)}
+            </SwipeCard>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
