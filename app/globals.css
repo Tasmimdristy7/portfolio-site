@@ -46,7 +46,7 @@ button {
 .site-shell {
   position: relative;
   min-height: 100vh;
-  overflow: clip;
+  overflow: hidden;
 }
 
 .page-doodles {
@@ -633,8 +633,6 @@ h1 {
   justify-self: center;
   width: min(1040px, 94%);
   gap: 14px;
-  padding: 16px;
-  margin: -16px;
 }
 
 /* height chain: grid row → snap section → swipe wrapper → card */
