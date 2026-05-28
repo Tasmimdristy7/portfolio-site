@@ -2113,9 +2113,9 @@ h4 {
 
   .carousel-slide {
     flex-shrink: 0;
-    width: 82vw;
-    scroll-snap-align: center;
-    padding: 0 8px;
+    width: 100%;
+    scroll-snap-align: start;
+    padding: 0 20px;
   }
 
   .carousel-slide .landing-persona-card {
