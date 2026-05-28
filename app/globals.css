@@ -2121,7 +2121,13 @@ h4 {
   .carousel-slide .landing-persona-card {
     width: 100%;
     height: auto;
-    min-height: 420px;
+    min-height: 320px;
+    padding: 18px 16px;
+  }
+
+  .carousel-slide .mode-preview {
+    max-height: 140px;
+    overflow: hidden;
   }
 
   .carousel-dots {
