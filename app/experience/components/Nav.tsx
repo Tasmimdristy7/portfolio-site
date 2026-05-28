@@ -39,7 +39,9 @@ export default function Nav() {
           ? "rgba(255,248,220,0.9)"
           : "linear-gradient(to bottom, rgba(255,248,220,0.96), transparent)",
         backdropFilter: scrolled ? "blur(16px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(60,70,82,0.12)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(60,70,82,0.08)" : "none",
+        outline: "none",
+        WebkitTapHighlightColor: "transparent",
       }}
     >
       <div className="flex items-center gap-3 md:gap-4">
@@ -66,7 +68,7 @@ export default function Nav() {
         </a>
       </div>
 
-      <ul className="flex w-full gap-2 overflow-x-auto list-none m-0 p-0 pb-1 sm:w-auto sm:gap-4 sm:overflow-visible sm:pb-0 lg:gap-10">
+      <ul className="flex w-full gap-2 overflow-x-auto scrollbar-none list-none m-0 p-0 sm:w-auto sm:gap-4 sm:overflow-visible lg:gap-10">
         {links.map((id) => (
           <li key={id}>
             <a

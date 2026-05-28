@@ -26,9 +26,11 @@ html { cursor: none; }
 body { cursor: none; font-family: var(--font-display); }
 html { scroll-padding-top: 96px; }
 
-::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar { width: 3px; height: 0px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--sand-dim); border-radius: 2px; }
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
 
 .interactive-card {
   will-change: transform, box-shadow, border-color;
@@ -49,6 +51,8 @@ html { scroll-padding-top: 96px; }
   border-radius: 999px;
   isolation: isolate;
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .nav-link::before {
   content: "";

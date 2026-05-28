@@ -73,7 +73,7 @@ export default function Hero() {
         }}
       >
         <span className="blink inline-block w-[6px] h-[6px] rounded-full bg-[#4ade80]" />
-        Hi, this is me
+        Hi! this is me,
       </div>
 
       {/* Name */}
@@ -81,15 +81,18 @@ export default function Hero() {
         className="mb-8 font-mono leading-[0.9] tracking-[0.02em] select-none uppercase md:mb-9 md:leading-[0.88]"
         style={{
           fontFamily: "var(--font-mono)",
-          fontSize: "clamp(46px, 16vw, 155px)",
+          fontSize: "clamp(40px, 10vw, 100px)",
           fontWeight: 900,
+          textAlign: "left",
+          margin: 0,
+          padding: 0,
           opacity: mounted ? 1 : 0,
           transform: mounted ? "translateY(0)" : "translateY(28px)",
           transition: "opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s",
         }}
       >
-        <span className="block" style={{ color: "var(--text)" }}>Tasmim</span>
-        <span className="hero-name-space block cursor-default">
+        <span className="block" style={{ color: "var(--text)", marginLeft: 0 }}>Tasmim</span>
+        <span className="hero-name-space block cursor-default" style={{ marginLeft: 0 }}>
           <span className="relative z-10" style={{ color: "var(--sand)" }}>
             Rashid
           </span>
