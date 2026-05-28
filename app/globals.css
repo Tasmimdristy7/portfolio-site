@@ -2089,79 +2089,16 @@ h4 {
 
   .swipe-card-wrapper .landing-persona-card { flex: none; }
 
-  /* Mobile carousel */
-  .carousel-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .carousel-track {
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    width: 100%;
-    gap: 0;
-  }
-
-  .carousel-track::-webkit-scrollbar { display: none; }
-
-  .carousel-slide {
-    flex-shrink: 0;
-    width: 100%;
-    scroll-snap-align: start;
-    padding: 0 20px;
-  }
-
-  .carousel-slide .landing-persona-card {
-    width: 100%;
-    height: auto;
-    min-height: 320px;
-    padding: 18px 16px;
-  }
-
-  .carousel-slide .mode-preview {
-    max-height: 140px;
-    overflow: hidden;
-  }
-
-  .carousel-dots {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .carousel-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: rgba(51, 60, 74, 0.2);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: all 0.2s ease;
-  }
-
-  .carousel-dot.active {
-    width: 20px;
-    background: rgba(51, 60, 74, 0.6);
-  }
-
   /* card */
   .landing-persona-card {
     width: 100%;
     height: auto;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto minmax(70px, auto) auto auto;
-    gap: clamp(6px, 2vw, 10px);
-    padding: clamp(10px, 3.5vw, 15px);
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(47, 56, 70, 0.1);
+    grid-template-rows: auto auto minmax(126px, 1fr) auto auto;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
     overflow: hidden;
   }
 
