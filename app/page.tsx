@@ -12,8 +12,8 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import SwipeCard from "./components/SwipeCard";
 import {
   personas,
   type Persona,
@@ -160,44 +160,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="persona-card-grid" aria-label="Choose a persona">
-            {personas.map((item, i) => {
-              const Icon = item.icon;
-              const meta = modeMeta[item.id];
-              const route = cardRoutes[item.id];
-              return (
-                <div key={item.id} className="card-snap-section">
-                  <SwipeCard route={route} cardIndex={i}>
-                    <button
-                      className={`landing-persona-card ${item.accent}`}
-                      type="button"
-                      aria-label={`${item.label}: ${item.landingSubtitle}`}
-                      onClick={() => { if (route) router.push(route); }}
-                    >
-                      <span className="mode-card-header">
-                        <span className="mode-title-stack">
-                          <span>{meta.mode}</span>
-                          <span className="mode-role">{meta.role}</span>
-                        </span>
-                        {item.id === "research" ? (
-                          <span className="academic-ticker" aria-hidden="true">
-                            paper<strong className="academic-number-blip">1</strong>
-                          </span>
-                        ) : null}
-                      </span>
-                      <span className="persona-card-copy">
-                        <strong>{item.label}</strong>
-                        <small>{item.landingSubtitle}</small>
-                      </span>
-                      <ModePreview id={item.id} icon={Icon} />
-                      <span className="mode-signal"><span />{meta.signal}</span>
-                      <span className="card-cta">Select <ArrowRight size={17} aria-hidden="true" /></span>
-                    </button>
-                  </SwipeCard>
-                </div>
-              );
-            })}
-          </div>
+          <MobileCarousel personas={personas} modeMeta={modeMeta} cardRoutes={cardRoutes} router={router} />
           <blockquote className="hero-quote">
             <p>&ldquo;In all chaos, there is a cosmos; in all disorder, a secret order.&rdquo;</p>
             <footer>That&apos;s where I thrive.</footer>
@@ -208,6 +171,151 @@ export default function Home() {
   );
 }
 
+
+function MobileCarousel({ personas, modeMeta, cardRoutes, router }: {
+  personas: { id: PersonaId; accent: string; label: string; landingSubtitle: string; icon: Persona["icon"] }[];
+  modeMeta: Record<PersonaId, { mode: string; role: string; signal: string }>;
+  cardRoutes: Partial<Record<PersonaId, string>>;
+  router: ReturnType<typeof useRouter>;
+}) {
+  const [active, setActive] = useState(0);
+  const [exiting, setExiting] = useState<number | null>(null);
+  const [dir, setDir] = useState<"next" | "prev">("next");
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const exitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const activeRef = useRef(0);
+  const total = personas.length;
+
+  const slide = useCallback((to: number, direction: "next" | "prev") => {
+    setDir(direction);
+    setExiting(activeRef.current);
+    setActive(to);
+    activeRef.current = to;
+    if (exitTimerRef.current) clearTimeout(exitTimerRef.current);
+    exitTimerRef.current = setTimeout(() => setExiting(null), 550);
+  }, []);
+
+  const stopTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = null;
+  }, []);
+
+  const resetTimer = useCallback(() => {
+    stopTimer();
+    timerRef.current = setInterval(() => {
+      const next = (activeRef.current + 1) % total;
+      slide(next, "next");
+    }, 5000);
+  }, [total, slide, stopTimer]);
+
+  useEffect(() => {
+    resetTimer();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+      if (exitTimerRef.current) clearTimeout(exitTimerRef.current);
+    };
+  }, [resetTimer]);
+
+  const goTo = (index: number) => {
+    const clamped = Math.max(0, Math.min(total - 1, index));
+    if (clamped === activeRef.current) return;
+    slide(clamped, clamped > activeRef.current ? "next" : "prev");
+    resetTimer();
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx < 0) goTo(activeRef.current + 1);
+      else goTo(activeRef.current - 1);
+    } else {
+      resetTimer();
+    }
+  };
+
+  return (
+    <div className="mobile-carousel-outer" onMouseEnter={stopTimer} onMouseLeave={resetTimer}>
+      <div className="carousel-row">
+        <button
+          className="carousel-arrow"
+          onClick={() => goTo(active - 1)}
+          disabled={active === 0}
+          aria-label="Previous"
+        >‹</button>
+
+        <div
+          className="carousel-viewport"
+          data-dir={dir}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+          aria-label="Choose a persona"
+        >
+          {personas.map((item, i) => {
+            const Icon = item.icon;
+            const meta = modeMeta[item.id];
+            const route = cardRoutes[item.id];
+            const cls = ["carousel-slide", i === active ? "active" : "", i === exiting ? "exiting" : ""].filter(Boolean).join(" ");
+            return (
+              <div key={item.id} className={cls}>
+                <button
+                  className={`landing-persona-card ${item.accent}`}
+                  type="button"
+                  aria-label={`${item.label}: ${item.landingSubtitle}`}
+                  onClick={() => { if (route) router.push(route); }}
+                >
+                  <span className="mode-card-header">
+                    <span className="mode-title-stack">
+                      <span>{meta.mode}</span>
+                      <span className="mode-role">{meta.role}</span>
+                    </span>
+                    {item.id === "research" ? (
+                      <span className="academic-ticker" aria-hidden="true">
+                        paper<strong className="academic-number-blip">1</strong>
+                      </span>
+                    ) : null}
+                  </span>
+                  <span className="persona-card-copy">
+                    <strong>{item.label}</strong>
+                    <small>{item.landingSubtitle}</small>
+                  </span>
+                  <ModePreview id={item.id} icon={Icon} />
+                  <span className="mode-signal"><span />{meta.signal}</span>
+                  <span className="card-cta">Select <ArrowRight size={17} aria-hidden="true" /></span>
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        <button
+          className="carousel-arrow"
+          onClick={() => goTo(active + 1)}
+          disabled={active === total - 1}
+          aria-label="Next"
+        >›</button>
+      </div>
+
+      <div className="carousel-dots" aria-label="Carousel position">
+        {personas.map((_, i) => (
+          <button
+            key={i}
+            className={`carousel-dot${i === active ? " active" : ""}`}
+            onClick={() => goTo(i)}
+            aria-label={`Go to card ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function ModePreview({
   id,

@@ -17,6 +17,25 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 4px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
 }
 
 body {
@@ -312,7 +331,7 @@ button {
   justify-self: center;
   width: 100%;
   padding: 0;
-  zoom: 0.70;
+  zoom: 0.82;
 }
 
 .identity-lockup {
@@ -345,7 +364,7 @@ button {
   max-width: 580px;
   color: rgba(51, 60, 74, 0.78);
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-size: clamp(1.38rem, 1.8vw, 1.6rem);
   font-style: italic;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -635,6 +654,36 @@ h1 {
   gap: 14px;
 }
 
+/* desktop: all 3 cards side by side, no dots, no arrows */
+.mobile-carousel-outer {
+  width: min(1040px, 94%);
+  justify-self: center;
+}
+
+.carousel-row {
+  display: contents;
+}
+
+.carousel-arrow {
+  display: none;
+}
+
+.carousel-viewport {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  width: 100%;
+}
+
+.carousel-slide {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.carousel-dots {
+  display: none;
+}
+
 /* height chain: grid row → snap section → swipe wrapper → card */
 .card-snap-section {
   height: 100%;
@@ -673,9 +722,10 @@ h1 {
   cursor: pointer;
   box-shadow: var(--shadow);
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+  will-change: transform;
 }
 
 .landing-persona-card::before {
@@ -727,9 +777,9 @@ h1 {
 
 .landing-persona-card:hover,
 .landing-persona-card.active {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: rgba(51, 60, 74, 0.44);
-  box-shadow: 0 34px 90px rgba(47, 56, 70, 0.18);
+  box-shadow: 0 20px 60px rgba(47, 56, 70, 0.16);
 }
 
 .landing-persona-card:hover::before {
@@ -1952,7 +2002,7 @@ h4 {
   }
 
   .landing-subtitle {
-    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    font-size: clamp(1.1rem, 1.4vw, 1.25rem);
   }
 
   .identity-chips span {
@@ -2053,8 +2103,11 @@ h4 {
 
   .landing-subtitle {
     max-width: 340px;
-    font-size: clamp(1rem, 1.2vw, 1.1rem);
-    line-height: 1.5;
+    font-size: 0.7rem;
+    font-style: italic;
+    font-weight: 700;
+    color: rgba(51, 60, 74, 0.78);
+    line-height: 1.65;
     text-align: center;
     overflow-wrap: anywhere;
   }
@@ -2072,22 +2125,135 @@ h4 {
     height: clamp(13px, 3.8vw, 17px);
   }
 
-  /* card grid — centred column, 19% padding each side scales proportionally */
-  .persona-card-grid {
-    display: flex !important;
-    flex-direction: column;
-    grid-template-columns: none;
-    overflow: visible;
-    gap: clamp(10px, 3vw, 16px);
+  /* mobile carousel — one card at a time */
+  .mobile-carousel-outer {
     width: 100%;
-    padding: 0 clamp(14px, 19%, 72px) clamp(32px, 8vw, 48px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: unset;
+    gap: 12px;
   }
 
-  .card-snap-section { width: 100%; height: auto; flex-direction: column; }
+  .carousel-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+  }
 
-  .swipe-card-wrapper { flex: none; }
+  .carousel-arrow {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    font-size: 20px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.2s ease, background 0.2s ease;
+    padding: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-  .swipe-card-wrapper .landing-persona-card { flex: none; }
+  .carousel-arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
+  }
+
+  .carousel-arrow:not(:disabled):active {
+    background: var(--line);
+  }
+
+  @keyframes cSlideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+  }
+  @keyframes cSlideOutLeft {
+    from { transform: translateX(0);     opacity: 1; }
+    to   { transform: translateX(-100%); opacity: 0; }
+  }
+  @keyframes cSlideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to   { transform: translateX(0);     opacity: 1; }
+  }
+  @keyframes cSlideOutRight {
+    from { transform: translateX(0);    opacity: 1; }
+    to   { transform: translateX(100%); opacity: 0; }
+  }
+
+  .carousel-viewport {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    overflow: hidden;
+  }
+
+  /* all slides stack in same cell — first card sets container height */
+  .carousel-slide {
+    grid-area: 1 / 1;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+  }
+
+  /* next direction: new card swooshes in from right, old exits left */
+  .carousel-viewport[data-dir="next"] .carousel-slide.active {
+    pointer-events: auto;
+    animation: cSlideInRight 0.68s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  .carousel-viewport[data-dir="next"] .carousel-slide.exiting {
+    pointer-events: none;
+    animation: cSlideOutLeft 0.68s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* prev direction: new card swooshes in from left, old exits right */
+  .carousel-viewport[data-dir="prev"] .carousel-slide.active {
+    pointer-events: auto;
+    animation: cSlideInLeft 0.68s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  .carousel-viewport[data-dir="prev"] .carousel-slide.exiting {
+    pointer-events: none;
+    animation: cSlideOutRight 0.68s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* card fills the full grid cell height */
+  .carousel-slide .landing-persona-card {
+    height: 100%;
+  }
+
+  /* dot indicators */
+  .carousel-dots {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: var(--line);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1), background 0.45s ease;
+  }
+
+  .carousel-dot.active {
+    width: 24px;
+    background: var(--gold);
+  }
 
   /* card */
   .landing-persona-card {
@@ -2104,10 +2270,30 @@ h4 {
 
   .landing-persona-card::before { inset: 7px; }
   .landing-persona-card::after { top: 10px; right: 10px; width: 5px; height: 5px; }
-  .landing-persona-card:active { box-shadow: 0 8px 28px rgba(47, 56, 70, 0.14); }
+
+  .landing-persona-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 12px rgba(47, 56, 70, 0.08);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  .landing-persona-card.teal:active {
+    border-color: rgba(91, 208, 176, 0.7);
+    box-shadow: 0 0 0 3px rgba(91, 208, 176, 0.18);
+  }
+
+  .landing-persona-card.green:active {
+    border-color: rgba(140, 122, 230, 0.7);
+    box-shadow: 0 0 0 3px rgba(140, 122, 230, 0.18);
+  }
+
+  .landing-persona-card.gold:active {
+    border-color: rgba(249, 115, 22, 0.7);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.18);
+  }
 
   /* card internals */
-  .mode-preview { display: grid; overflow: hidden; }
+  .mode-preview { display: grid; overflow: hidden; min-height: 0; }
 
   .mode-card-header {
     flex-direction: row;
@@ -2212,7 +2398,7 @@ h4 {
 
   /* tighten hero on tiny screens */
   .landing-name { font-size: clamp(2.8rem, 11vw, 4.5rem); }
-  .landing-subtitle { font-size: clamp(0.48rem, 0.56vw, 0.52rem); }
+  .landing-subtitle { font-size: 0.7rem; }
   .identity-chips span { width: clamp(30px, 9vw, 36px); height: clamp(30px, 9vw, 36px); }
 
   /* tighter card grid — less padding on very small phones */
