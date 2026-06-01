@@ -15,6 +15,132 @@
   box-sizing: border-box;
 }
 
+/* ── intro overlay ─────────────────────────────────────────── */
+@keyframes introFade {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subtitleIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* name appears exactly where the quote was (measured via JS), holds, then rises */
+@keyframes nameRise {
+  0%   { transform: translateY(var(--name-offset, 30vh)); }
+  55%  { transform: translateY(var(--name-offset, 30vh)); }
+  100% { transform: translateY(0); }
+}
+
+/* line-by-line left-to-right reveal for quote */
+@keyframes lineRevealLR {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+.intro-line-wrap {
+  display: block;
+  line-height: 1.6;
+}
+
+.intro-line {
+  display: block;
+  animation: lineRevealLR 1.4s cubic-bezier(0.77, 0, 0.175, 1) both;
+}
+
+@keyframes thriveFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.intro-thrive-fade {
+  animation: thriveFade 0.9s ease both;
+}
+
+/* letter-by-letter reveal for landing name */
+@keyframes charIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.name-char {
+  display: inline-block;
+}
+
+.site-shell:not(.intro-waiting) .name-char {
+  opacity: 0;
+  animation: charIn 0.4s ease both;
+}
+
+/* page waits behind the overlay */
+.intro-waiting { opacity: 0; pointer-events: none; }
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--cornsilk);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.intro-stage {
+  position: relative;
+  width: min(640px, 90vw);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.intro-quote-text {
+  margin: 0;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 700;
+  color: #766c5e;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.intro-thrive {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+  background: linear-gradient(100deg, #2c1a08 0%, #7a4e28 50%, #2c1a08 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 2px rgba(80, 45, 10, 0.22));
+}
+
+/* page reveal — name rises first, everything else staggers in */
+/* total nameRise = 5.5s: 0.5s fade-in, 2.5s hold, 2.5s rise */
+/* rise starts at 55% = 3.025s — chars appear during that window */
+.site-shell:not(.intro-waiting) .landing-name          { animation: nameRise  5.5s cubic-bezier(0.25, 0.1, 0.25, 1) both 0s; }
+.site-shell:not(.intro-waiting) .landing-subtitle      { animation: subtitleIn 1.4s ease both 4.2s; }
+.site-shell:not(.intro-waiting) .identity-chips        { animation: introFade  1s   ease both 5.0s; }
+.site-shell:not(.intro-waiting) .alma-mater            { animation: introFade  0.9s ease both 5.4s; }
+.site-shell:not(.intro-waiting) .mobile-carousel-outer { animation: introFade  1s   ease both 5.8s; }
+.site-shell:not(.intro-waiting) .hero-quote            { animation: introFade  0.9s ease both 6.2s; }
+.site-shell:not(.intro-waiting) .page-doodles          { animation: introFade  1.2s ease both 6.6s; }
+
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
@@ -331,7 +457,7 @@ button {
   justify-self: center;
   width: 100%;
   padding: 0;
-  zoom: 0.82;
+  zoom: 0.76;
 }
 
 .identity-lockup {

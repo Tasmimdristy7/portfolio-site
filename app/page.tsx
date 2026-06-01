@@ -53,9 +53,26 @@ const cardRoutes: Partial<Record<PersonaId, string>> = {
 
 export default function Home() {
   const router = useRouter();
+  const [introDone, setIntroDone] = useState(false);
+  const nameRef = useRef<HTMLHeadingElement>(null);
+  const [nameOffset, setNameOffset] = useState("30vh");
+
+  useEffect(() => {
+    const measure = () => {
+      if (!nameRef.current) return;
+      const rect = nameRef.current.getBoundingClientRect();
+      const offset = window.innerHeight / 2 - (rect.top + rect.height / 2);
+      setNameOffset(`${Math.round(offset)}px`);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   return (
-    <main className="site-shell">
+    <>
+      {!introDone && <IntroScreen onDone={() => setIntroDone(true)} />}
+      <main className={`site-shell${introDone ? "" : " intro-waiting"}`}>
       <div className="page-doodles" aria-hidden="true">
         <span className="page-spark spark-a">✦</span>
         <span className="page-spark spark-b">✧</span>
@@ -131,8 +148,18 @@ export default function Home() {
               <span>✶</span>
             </div>
             <div className="name-subtitle-block">
-            <h1 id="hero-title" className="landing-name">
-              Tasmim Rashid
+            <h1
+              ref={nameRef}
+              id="hero-title"
+              className="landing-name"
+              aria-label="Tasmim Rashid"
+              style={{ "--name-offset": nameOffset } as React.CSSProperties}
+            >
+              {"Tasmim Rashid".split("").map((ch, i) => (
+                <span key={i} className="name-char" style={{ animationDelay: `${i * 0.08}s` }} aria-hidden="true">
+                  {ch === " " ? "\u00A0" : ch}
+                </span>
+              ))}
             </h1>
             <p className="landing-subtitle">
               <strong>Explorer at heart —</strong>
@@ -168,9 +195,60 @@ export default function Home() {
         </div>
       </section>
     </main>
+    </>
   );
 }
 
+function IntroScreen({ onDone }: { onDone: () => void }) {
+  const [phase, setPhase] = useState<0 | 1 | 2 | 3>(0);
+
+  useEffect(() => {
+    const timers = [
+      setTimeout(() => setPhase(1), 100),   // quote lines reveal L→R
+      setTimeout(() => setPhase(2), 2400),  // thrive fades in
+      setTimeout(() => setPhase(3), 4200),  // overlay fades out — name starts simultaneously
+      setTimeout(onDone, 4200),             // page reveals at same moment
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, [onDone]);
+
+  const exiting = phase === 3;
+
+  return (
+    <div
+      className="intro-screen"
+      style={{
+        opacity: exiting ? 0 : 1,
+        transition: exiting ? "opacity 0.9s ease" : "none",
+      }}
+      aria-live="polite"
+    >
+      <div className="intro-stage">
+        <div className="intro-block" style={{ pointerEvents: "none" }}>
+          {phase >= 1 && (
+            <p className="intro-quote-text">
+              <span className="intro-line-wrap">
+                <span className="intro-line">&ldquo;In all chaos, there is a cosmos;</span>
+              </span>
+              <span className="intro-line-wrap">
+                <span className="intro-line" style={{ animationDelay: "0.5s" }}>in all disorder, a secret order.&rdquo;</span>
+              </span>
+            </p>
+          )}
+          <footer
+            className="intro-thrive"
+            style={{
+              opacity: phase >= 2 ? 1 : 0,
+              transition: phase >= 2 ? "opacity 0.9s ease" : "none",
+            }}
+          >
+            That&apos;s where I thrive.
+          </footer>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function MobileCarousel({ personas, modeMeta, cardRoutes, router }: {
   personas: { id: PersonaId; accent: string; label: string; landingSubtitle: string; icon: Persona["icon"] }[];
