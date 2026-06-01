@@ -29,9 +29,7 @@ export default function Contact() {
       <div className="grid grid-cols-1 gap-10 items-start lg:grid-cols-2 lg:gap-20">
         <Reveal delay={100}>
           <p className="text-[16px] leading-relaxed mb-8 sm:text-[19px] sm:mb-9" style={{ color: "var(--text-muted)" }}>
-            Open to{" "}
-            <strong style={{ color: "var(--sand)" }}>senior remote QA roles</strong>. I work
-            async across time zones and bring both framework architecture and hands-on execution.
+            Open to new opportunities and collaboration.
           </p>
 
           <div className="flex flex-col gap-0.5">

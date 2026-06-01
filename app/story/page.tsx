@@ -20,7 +20,7 @@ export default function StoryPage() {
     }}>
 
       <button
-        onClick={() => router.back()}
+        onClick={() => { sessionStorage.setItem("introSeen", "true"); router.push("/"); }}
         style={{
           position: "absolute",
           top: "32px",

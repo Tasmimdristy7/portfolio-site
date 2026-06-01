@@ -73,7 +73,7 @@ export default function Hero() {
         }}
       >
         <span className="blink inline-block w-[6px] h-[6px] rounded-full bg-[#4ade80]" />
-        Hi! this is me,
+        BRAC University &rsquo;21 &nbsp;·&nbsp; NDSU Fall &rsquo;27
       </div>
 
       {/* Name */}

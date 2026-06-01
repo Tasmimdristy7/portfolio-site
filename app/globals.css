@@ -131,15 +131,32 @@
 }
 
 /* page reveal — name rises first, everything else staggers in */
-/* total nameRise = 5.5s: 0.5s fade-in, 2.5s hold, 2.5s rise */
-/* rise starts at 55% = 3.025s — chars appear during that window */
+/* nameRise = 5.5s total; everything else waits until name settles, then staggers in slowly */
 .site-shell:not(.intro-waiting) .landing-name          { animation: nameRise  5.5s cubic-bezier(0.25, 0.1, 0.25, 1) both 0s; }
-.site-shell:not(.intro-waiting) .landing-subtitle      { animation: subtitleIn 1.4s ease both 4.2s; }
-.site-shell:not(.intro-waiting) .identity-chips        { animation: introFade  1s   ease both 5.0s; }
-.site-shell:not(.intro-waiting) .alma-mater            { animation: introFade  0.9s ease both 5.4s; }
-.site-shell:not(.intro-waiting) .mobile-carousel-outer { animation: introFade  1s   ease both 5.8s; }
-.site-shell:not(.intro-waiting) .hero-quote            { animation: introFade  0.9s ease both 6.2s; }
-.site-shell:not(.intro-waiting) .page-doodles          { animation: introFade  1.2s ease both 6.6s; }
+.site-shell:not(.intro-waiting) .page-doodles          { animation: introFade  1.8s ease both 5.5s; }
+.site-shell:not(.intro-waiting) .header-doodle         { animation: introFade  1.4s ease both 5.6s; opacity: 0; }
+.site-shell:not(.intro-waiting) .spark-field           { animation: introFade  1.4s ease both 5.8s; opacity: 0; }
+.site-shell:not(.intro-waiting) .landing-subtitle      { animation: subtitleIn 1.6s ease both 5.7s; }
+.site-shell:not(.intro-waiting) .identity-chips        { animation: introFade  1.4s ease both 6.4s; }
+.site-shell:not(.intro-waiting) .alma-mater            { animation: introFade  1.4s ease both 6.9s; }
+.site-shell:not(.intro-waiting) .mobile-carousel-outer { animation: introFade  1.6s ease both 7.4s; }
+.site-shell:not(.intro-waiting) .hero-quote            { animation: introFade  1.4s ease both 7.9s; }
+
+/* Back-navigation: show everything instantly, no animations */
+.site-shell.instant .name-char,
+.site-shell.instant .landing-name,
+.site-shell.instant .landing-subtitle,
+.site-shell.instant .identity-chips,
+.site-shell.instant .alma-mater,
+.site-shell.instant .mobile-carousel-outer,
+.site-shell.instant .hero-quote,
+.site-shell.instant .page-doodles,
+.site-shell.instant .header-doodle,
+.site-shell.instant .spark-field {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
 
 html {
   scroll-behavior: smooth;

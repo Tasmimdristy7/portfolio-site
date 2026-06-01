@@ -26,6 +26,39 @@ html { cursor: none; }
 body { cursor: none; font-family: var(--font-display); }
 html { scroll-padding-top: 96px; }
 
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 5px 10px 5px 6px;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.back-btn:hover {
+  color: var(--text);
+  border-color: var(--border2);
+  background: rgba(60, 70, 82, 0.05);
+}
+.back-btn:active {
+  transform: scale(0.95);
+  background: rgba(60, 70, 82, 0.1);
+}
+.back-btn-arrow {
+  color: var(--sand);
+  transition: transform 0.15s ease;
+}
+.back-btn:hover .back-btn-arrow {
+  transform: translateX(-3px);
+}
+
 ::-webkit-scrollbar { width: 3px; height: 0px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--sand-dim); border-radius: 2px; }

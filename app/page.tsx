@@ -54,8 +54,17 @@ const cardRoutes: Partial<Record<PersonaId, string>> = {
 export default function Home() {
   const router = useRouter();
   const [introDone, setIntroDone] = useState(false);
+  const [instant, setInstant] = useState(false);
   const nameRef = useRef<HTMLHeadingElement>(null);
   const [nameOffset, setNameOffset] = useState("30vh");
+
+  useEffect(() => {
+    if (sessionStorage.getItem("introSeen") === "true") {
+      sessionStorage.removeItem("introSeen");
+      setIntroDone(true);
+      setInstant(true);
+    }
+  }, []);
 
   useEffect(() => {
     const measure = () => {
@@ -69,10 +78,19 @@ export default function Home() {
     return () => window.removeEventListener("resize", measure);
   }, []);
 
+  const handleIntroDone = () => {
+    setIntroDone(true);
+  };
+
+  const navigateTo = (route: string) => {
+    sessionStorage.setItem("introSeen", "true");
+    router.push(route);
+  };
+
   return (
     <>
-      {!introDone && <IntroScreen onDone={() => setIntroDone(true)} />}
-      <main className={`site-shell${introDone ? "" : " intro-waiting"}`}>
+      {!introDone && <IntroScreen onDone={handleIntroDone} />}
+      <main className={`site-shell${introDone ? "" : " intro-waiting"}${instant ? " instant" : ""}`}>
       <div className="page-doodles" aria-hidden="true">
         <span className="page-spark spark-a">✦</span>
         <span className="page-spark spark-b">✧</span>
@@ -170,13 +188,13 @@ export default function Home() {
             </p>
             </div>
             <div className="identity-chips" aria-label="Identity modes">
-              <button className="mode-tag teal" onClick={() => router.push("/experience")} aria-label="Engineer">
+              <button className="mode-tag teal" onClick={() => navigateTo("/experience")} aria-label="Engineer">
                 <Cpu size={13} aria-hidden="true" /> Software Engineer
               </button>
-              <button className="mode-tag violet" onClick={() => router.push("/research")} aria-label="Research">
+              <button className="mode-tag violet" onClick={() => navigateTo("/research")} aria-label="Research">
                 <ScanLine size={13} aria-hidden="true" /> Research
               </button>
-              <button className="mode-tag gold" onClick={() => router.push("/story")} aria-label="Stories">
+              <button className="mode-tag gold" onClick={() => navigateTo("/story")} aria-label="Stories">
                 <Camera size={13} aria-hidden="true" /> Traveler
               </button>
             </div>
@@ -187,7 +205,7 @@ export default function Home() {
             </div>
           </div>
 
-          <MobileCarousel personas={personas} modeMeta={modeMeta} cardRoutes={cardRoutes} router={router} />
+          <MobileCarousel personas={personas} modeMeta={modeMeta} cardRoutes={cardRoutes} onNavigate={navigateTo} />
           <blockquote className="hero-quote">
             <p>&ldquo;In all chaos, there is a cosmos; in all disorder, a secret order.&rdquo;</p>
             <footer>That&apos;s where I thrive.</footer>
@@ -250,11 +268,11 @@ function IntroScreen({ onDone }: { onDone: () => void }) {
   );
 }
 
-function MobileCarousel({ personas, modeMeta, cardRoutes, router }: {
+function MobileCarousel({ personas, modeMeta, cardRoutes, onNavigate }: {
   personas: { id: PersonaId; accent: string; label: string; landingSubtitle: string; icon: Persona["icon"] }[];
   modeMeta: Record<PersonaId, { mode: string; role: string; signal: string }>;
   cardRoutes: Partial<Record<PersonaId, string>>;
-  router: ReturnType<typeof useRouter>;
+  onNavigate: (route: string) => void;
 }) {
   const [active, setActive] = useState(0);
   const [exiting, setExiting] = useState<number | null>(null);
@@ -347,7 +365,7 @@ function MobileCarousel({ personas, modeMeta, cardRoutes, router }: {
                   className={`landing-persona-card ${item.accent}`}
                   type="button"
                   aria-label={`${item.label}: ${item.landingSubtitle}`}
-                  onClick={() => { if (route) router.push(route); }}
+                  onClick={() => { if (route) onNavigate(route); }}
                 >
                   <span className="mode-card-header">
                     <span className="mode-title-stack">

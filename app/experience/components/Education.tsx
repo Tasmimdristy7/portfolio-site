@@ -20,6 +20,24 @@ const education = [
     status: "completed",
     note: "Core CS fundamentals, software engineering, algorithms, and systems.",
   },
+  {
+    school: "Govt. Azizul Haq College",
+    short: "GAHC",
+    degree: "Higher Secondary Certificate",
+    field: "Science",
+    period: "2014 – 2016",
+    status: "completed",
+    note: "HSC in Science stream, Bogura.",
+  },
+  {
+    school: "Bogura Cantonment School and College",
+    short: "BCSC",
+    degree: "Secondary School Certificate",
+    field: "Science",
+    period: "Up to 2014",
+    status: "completed",
+    note: "SSC in Science stream, Bogura.",
+  },
 ];
 
 export default function Education() {
@@ -28,8 +46,8 @@ export default function Education() {
       <Reveal>
         <SectionEyebrow>Education</SectionEyebrow>
         <SectionHeading>
-          <span style={{ color: "var(--text)" }}>Where it</span>{" "}
-          <span style={{ color: "var(--sand)" }}>started.</span>
+          <span style={{ color: "var(--text)" }}>Alma</span>{" "}
+          <span style={{ color: "var(--sand)" }}>mater.</span>
         </SectionHeading>
       </Reveal>
 

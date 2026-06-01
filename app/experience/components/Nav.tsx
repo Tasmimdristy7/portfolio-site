@@ -1,11 +1,12 @@
 "use client";
 import type { MouseEvent } from "react";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const links = ["about", "experience", "skills", "education", "projects", "contact"];
 
 export default function Nav() {
+  const router = useRouter();
   const [active, setActive] = useState("");
   const [scrolled, setScrolled] = useState(false);
 
@@ -45,14 +46,13 @@ export default function Nav() {
       }}
     >
       <div className="flex items-center gap-3 md:gap-4">
-        <Link
-          href="/"
-          className="flex items-center gap-1.5 font-mono text-[11px] tracking-[0.12em] uppercase no-underline transition-colors duration-200"
-          style={{ fontFamily: "var(--font-mono)", color: "var(--text-dim)" }}
+        <button
+          className="back-btn"
+          onClick={() => { sessionStorage.setItem("introSeen", "true"); router.push("/"); }}
         >
-          <span style={{ color: "var(--sand)" }}>←</span>
+          <span className="back-btn-arrow">←</span>
           Back
-        </Link>
+        </button>
         <a
           href="#"
           className="nav-brand flex items-center gap-2 font-mono text-[13px] text-[var(--sand)] no-underline px-2 py-2"
