@@ -152,11 +152,7 @@ export default function About() {
               <strong style={{ color: "var(--sand)", fontWeight: 700 }}>
                 Truely (Singapore)
               </strong>
-              , now heading to{" "}
-              <strong style={{ color: "var(--sand)", fontWeight: 700 }}>
-                NDSU for an MS in Software Engineering & Security
-              </strong>{" "}
-              in Fall 2026.
+              .
             </p>
             <p>
               On the data side, I've built ML models for{" "}

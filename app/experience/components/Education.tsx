@@ -2,15 +2,15 @@
 import { Reveal, SectionEyebrow, SectionHeading } from "./ui";
 
 const education = [
-  {
-    school: "North Dakota State University",
-    short: "NDSU",
-    degree: "Master of Science",
-    field: "Software Engineering & Security",
-    period: "Fall 2026",
-    status: "upcoming",
-    note: "Focused on secure systems, program analysis, and AI evaluation.",
-  },
+  // {
+  //   school: "North Dakota State University",
+  //   short: "NDSU",
+  //   degree: "Master of Science",
+  //   field: "Software Engineering & Security",
+  //   period: "Fall 2026",
+  //   status: "upcoming",
+  //   note: "Focused on secure systems, program analysis, and AI evaluation.",
+  // },
   {
     school: "BRAC University",
     short: "BRACU",

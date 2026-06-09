@@ -174,7 +174,7 @@ export default function Home() {
               style={{ "--name-offset": nameOffset } as React.CSSProperties}
             >
               {"Tasmim Rashid".split("").map((ch, i) => (
-                <span key={i} className="name-char" style={{ animationDelay: `${i * 0.08}s` }} aria-hidden="true">
+                <span key={i} className="name-char" style={{ animationDelay: `${i * 0.04}s` }} aria-hidden="true">
                   {ch === " " ? "\u00A0" : ch}
                 </span>
               ))}
@@ -200,12 +200,12 @@ export default function Home() {
             </div>
             <div className="alma-mater">
               <span>BRAC University &rsquo;21</span>
-              <span className="alma-dot">·</span>
-              <span>NDSU Fall &rsquo;27</span>
+              {/* <span className="alma-dot">·</span> */}
+              {/* <span>NDSU Fall &rsquo;27</span> */}
             </div>
           </div>
 
-          <MobileCarousel personas={personas} modeMeta={modeMeta} cardRoutes={cardRoutes} onNavigate={navigateTo} />
+          <MobileCarousel personas={personas} modeMeta={modeMeta} cardRoutes={cardRoutes} onNavigate={navigateTo} revealed={introDone} />
           <blockquote className="hero-quote">
             <p>&ldquo;In all chaos, there is a cosmos; in all disorder, a secret order.&rdquo;</p>
             <footer>That&apos;s where I thrive.</footer>
@@ -224,8 +224,8 @@ function IntroScreen({ onDone }: { onDone: () => void }) {
     const timers = [
       setTimeout(() => setPhase(1), 100),   // quote lines reveal L→R
       setTimeout(() => setPhase(2), 2400),  // thrive fades in
-      setTimeout(() => setPhase(3), 4200),  // overlay fades out — name starts simultaneously
-      setTimeout(onDone, 4200),             // page reveals at same moment
+      setTimeout(() => setPhase(3), 4000),  // content drifts up, overlay fades
+      setTimeout(onDone, 4600),             // page reveals after overlay clears
     ];
     return () => timers.forEach(clearTimeout);
   }, [onDone]);
@@ -237,12 +237,20 @@ function IntroScreen({ onDone }: { onDone: () => void }) {
       className="intro-screen"
       style={{
         opacity: exiting ? 0 : 1,
-        transition: exiting ? "opacity 0.9s ease" : "none",
+        transition: exiting ? "opacity 0.7s ease 0.2s" : "none",
       }}
       aria-live="polite"
     >
       <div className="intro-stage">
-        <div className="intro-block" style={{ pointerEvents: "none" }}>
+        <div
+          className="intro-block"
+          style={{
+            pointerEvents: "none",
+            opacity: exiting ? 0 : 1,
+            transform: exiting ? "translateY(-24px)" : "translateY(0)",
+            transition: exiting ? "opacity 0.4s ease, transform 0.5s ease" : "none",
+          }}
+        >
           {phase >= 1 && (
             <p className="intro-quote-text">
               <span className="intro-line-wrap">
@@ -268,11 +276,12 @@ function IntroScreen({ onDone }: { onDone: () => void }) {
   );
 }
 
-function MobileCarousel({ personas, modeMeta, cardRoutes, onNavigate }: {
+function MobileCarousel({ personas, modeMeta, cardRoutes, onNavigate, revealed }: {
   personas: { id: PersonaId; accent: string; label: string; landingSubtitle: string; icon: Persona["icon"] }[];
   modeMeta: Record<PersonaId, { mode: string; role: string; signal: string }>;
   cardRoutes: Partial<Record<PersonaId, string>>;
   onNavigate: (route: string) => void;
+  revealed: boolean;
 }) {
   const [active, setActive] = useState(0);
   const [exiting, setExiting] = useState<number | null>(null);
@@ -307,12 +316,13 @@ function MobileCarousel({ personas, modeMeta, cardRoutes, onNavigate }: {
   }, [total, slide, stopTimer]);
 
   useEffect(() => {
+    if (!revealed) return;
     resetTimer();
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
       if (exitTimerRef.current) clearTimeout(exitTimerRef.current);
     };
-  }, [resetTimer]);
+  }, [revealed, resetTimer]);
 
   const goTo = (index: number) => {
     const clamped = Math.max(0, Math.min(total - 1, index));
@@ -429,7 +439,7 @@ function ModePreview({
               <Cpu size={14} />
               career console
             </span>
-            <strong>6 yrs exp</strong>
+            <strong>5 yrs exp</strong>
           </div>
           <div className="career-badges">
             <span>sdet</span>

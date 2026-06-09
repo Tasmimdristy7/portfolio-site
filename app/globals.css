@@ -70,7 +70,7 @@
 
 .site-shell:not(.intro-waiting) .name-char {
   opacity: 0;
-  animation: charIn 0.4s ease both;
+  animation: charIn 0.25s ease both;
 }
 
 /* page waits behind the overlay */
@@ -131,16 +131,16 @@
 }
 
 /* page reveal — name rises first, everything else staggers in */
-/* nameRise = 5.5s total; everything else waits until name settles, then staggers in slowly */
-.site-shell:not(.intro-waiting) .landing-name          { animation: nameRise  5.5s cubic-bezier(0.25, 0.1, 0.25, 1) both 0s; }
-.site-shell:not(.intro-waiting) .page-doodles          { animation: introFade  1.8s ease both 5.5s; }
-.site-shell:not(.intro-waiting) .header-doodle         { animation: introFade  1.4s ease both 5.6s; opacity: 0; }
-.site-shell:not(.intro-waiting) .spark-field           { animation: introFade  1.4s ease both 5.8s; opacity: 0; }
-.site-shell:not(.intro-waiting) .landing-subtitle      { animation: subtitleIn 1.6s ease both 5.7s; }
-.site-shell:not(.intro-waiting) .identity-chips        { animation: introFade  1.4s ease both 6.4s; }
-.site-shell:not(.intro-waiting) .alma-mater            { animation: introFade  1.4s ease both 6.9s; }
-.site-shell:not(.intro-waiting) .mobile-carousel-outer { animation: introFade  1.6s ease both 7.4s; }
-.site-shell:not(.intro-waiting) .hero-quote            { animation: introFade  1.4s ease both 7.9s; }
+/* nameRise = 1.2s total; everything else follows tightly */
+.site-shell:not(.intro-waiting) .landing-name          { animation: nameRise  1.2s cubic-bezier(0.25, 0.1, 0.25, 1) both 0s; }
+.site-shell:not(.intro-waiting) .page-doodles          { animation: introFade  0.6s ease both 1.2s; }
+.site-shell:not(.intro-waiting) .header-doodle         { animation: introFade  0.5s ease both 1.3s; opacity: 0; }
+.site-shell:not(.intro-waiting) .spark-field           { animation: introFade  0.5s ease both 1.4s; opacity: 0; }
+.site-shell:not(.intro-waiting) .landing-subtitle      { animation: subtitleIn 0.6s ease both 1.3s; }
+.site-shell:not(.intro-waiting) .identity-chips        { animation: introFade  0.5s ease both 1.6s; }
+.site-shell:not(.intro-waiting) .alma-mater            { animation: introFade  0.5s ease both 1.8s; }
+.site-shell:not(.intro-waiting) .mobile-carousel-outer { animation: introFade  0.6s ease both 2.0s; }
+.site-shell:not(.intro-waiting) .hero-quote            { animation: introFade  0.5s ease both 2.2s; }
 
 /* Back-navigation: show everything instantly, no animations */
 .site-shell.instant .name-char,

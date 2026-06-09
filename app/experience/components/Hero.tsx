@@ -73,7 +73,7 @@ export default function Hero() {
         }}
       >
         <span className="blink inline-block w-[6px] h-[6px] rounded-full bg-[#4ade80]" />
-        BRAC University &rsquo;21 &nbsp;·&nbsp; NDSU Fall &rsquo;27
+        BRAC University &rsquo;21
       </div>
 
       {/* Name */}
@@ -193,8 +193,8 @@ export default function Hero() {
         }}
       >
         <span>BRAC University &rsquo;21</span>
-        <span style={{ opacity: 0.4 }}>·</span>
-        <span>NDSU Fall &rsquo;27</span>
+        {/* <span style={{ opacity: 0.4 }}>·</span> */}
+        {/* <span>NDSU Fall &rsquo;27</span> */}
       </div>
 
       {/* Scroll hint */}

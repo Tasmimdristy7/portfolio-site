@@ -59,7 +59,7 @@ export const skills = [
     category: "Security",
     headline: "Security testing across authentication, APIs, and access control",
     tools: ["Auth Testing", "Access Control", "Permission Testing", "API Security", "Vulnerability Testing", "Risk-Based Testing"],
-    proof: "Hands-on security testing across auth flows, permission boundaries, API risks, and security-sensitive workflows. Pursuing MS in Software Engineering & Security at NDSU.",
+    proof: "Hands-on security testing across auth flows, permission boundaries, API risks, and security-sensitive workflows.",
   },
   {
     category: "CI/CD & DevOps",
