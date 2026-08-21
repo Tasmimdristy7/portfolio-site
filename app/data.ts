@@ -58,8 +58,8 @@ export type Persona = {
 export const contacts = [
   {
     label: "Email",
-    href: "mailto:tasmim.rashid@ndus.edu",
-    value: "tasmim.rashid@ndus.edu",
+    href: "mailto:tasmim.rashid.dristy@gmail.com",
+    value: "tasmim.rashid.dristy@gmail.com",
     icon: Mail,
   },
   {
@@ -86,7 +86,7 @@ export const personas: Persona[] = [
     eyebrow: "Release confidence, AI evaluation, and security-minded quality",
     headline: "I build test systems for products where reliability has to be proven.",
     intro:
-      "Senior QA/SDET experience across eSIM telecom, AI/ML evaluation, Web3, cloud infrastructure, and healthtech, with automation and CI/CD as the operating center.",
+      "5+ years of QA/SDET experience across eSIM telecom, AI/ML evaluation, Web3, cloud infrastructure, and healthtech, with automation and CI/CD as the operating center. Now pursuing an MS in Software Engineering & Security at NDSU and seeking Summer 2027 software engineering, SDET, AI evaluation, and security testing internships.",
     accent: "teal",
     highlights: [
       {

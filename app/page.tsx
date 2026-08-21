@@ -200,8 +200,8 @@ export default function Home() {
             </div>
             <div className="alma-mater">
               <span>BRAC University &rsquo;21</span>
-              {/* <span className="alma-dot">·</span> */}
-              {/* <span>NDSU Fall &rsquo;27</span> */}
+              <span className="alma-dot">·</span>
+              <span>NDSU MS &rsquo;26</span>
             </div>
           </div>
 

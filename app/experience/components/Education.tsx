@@ -2,15 +2,15 @@
 import { Reveal, SectionEyebrow, SectionHeading } from "./ui";
 
 const education = [
-  // {
-  //   school: "North Dakota State University",
-  //   short: "NDSU",
-  //   degree: "Master of Science",
-  //   field: "Software Engineering & Security",
-  //   period: "Fall 2026",
-  //   status: "upcoming",
-  //   note: "Focused on secure systems, program analysis, and AI evaluation.",
-  // },
+  {
+    school: "North Dakota State University",
+    short: "NDSU",
+    degree: "Master of Science",
+    field: "Software Engineering & Security",
+    period: "Fall 2026 — Present",
+    status: "current",
+    note: "Focused on secure systems, program analysis, and AI evaluation. Seeking Summer 2027 software engineering, SDET, AI evaluation, and security testing internships.",
+  },
   {
     school: "BRAC University",
     short: "BRACU",
@@ -59,12 +59,12 @@ export default function Education() {
               style={{
                 background: "var(--surface)",
                 border: "1px solid var(--border2)",
-                borderLeft: edu.status === "upcoming"
+                borderLeft: edu.status !== "completed"
                   ? "3px solid var(--sand)"
                   : "3px solid var(--border2)",
               }}
             >
-              {edu.status === "upcoming" && (
+              {edu.status !== "completed" && (
                 <span
                   className="absolute top-6 right-6 flex items-center gap-1.5 font-mono text-[10px] tracking-[0.14em] uppercase"
                   style={{ fontFamily: "var(--font-mono)", color: "var(--sand)" }}
@@ -73,7 +73,7 @@ export default function Education() {
                     className="inline-block w-[6px] h-[6px] rounded-full"
                     style={{ background: "var(--sand)", animation: "pulse 2s ease infinite" }}
                   />
-                  Upcoming
+                  {edu.status === "current" ? "Current" : "Upcoming"}
                 </span>
               )}
 
