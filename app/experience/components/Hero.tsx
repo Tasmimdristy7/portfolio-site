@@ -73,7 +73,7 @@ export default function Hero() {
         }}
       >
         <span className="blink inline-block w-[6px] h-[6px] rounded-full bg-[#4ade80]" />
-        BRAC University &rsquo;21
+        Seeking Summer 2027 SWE / SDET / AI Eval / Security Internships
       </div>
 
       {/* Name */}
@@ -117,11 +117,15 @@ export default function Hero() {
           transition: "opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s",
         }}
       >
-        Software engineer with 5+ years building and breaking systems —{" "}
+        MS Software Engineering & Security student at NDSU, seeking a{" "}
+        <strong style={{ color: "var(--sand)", fontWeight: 700 }}>
+          Summer 2027 software engineering, SDET, AI evaluation, or security testing internship
+        </strong>
+        {" "}— backed by 5+ years building and breaking systems across{" "}
         <strong style={{ color: "var(--sand)", fontWeight: 700 }}>
           automation, backend, and data science
         </strong>
-        {" "}across AI, security, Web3, and data products. I test what I build and{" "}
+        {" "}in AI, security, Web3, and data products. I test what I build and{" "}
         <strong style={{ color: "var(--sand)", fontWeight: 700 }}>
           build what I understand.
         </strong>
@@ -193,8 +197,8 @@ export default function Hero() {
         }}
       >
         <span>BRAC University &rsquo;21</span>
-        {/* <span style={{ opacity: 0.4 }}>·</span> */}
-        {/* <span>NDSU Fall &rsquo;27</span> */}
+        <span style={{ opacity: 0.4 }}>·</span>
+        <span>NDSU MS &rsquo;26</span>
       </div>
 
       {/* Scroll hint */}

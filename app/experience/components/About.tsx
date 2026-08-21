@@ -152,6 +152,10 @@ export default function About() {
               <strong style={{ color: "var(--sand)", fontWeight: 700 }}>
                 Truely (Singapore)
               </strong>
+              . Currently pursuing an{" "}
+              <strong style={{ color: "var(--sand)", fontWeight: 700 }}>
+                MS in Software Engineering & Security at NDSU
+              </strong>
               .
             </p>
             <p>
@@ -173,11 +177,11 @@ export default function About() {
               numbers that showed up in production, not just dashboards.
             </p>
             <p>
-              Open to{" "}
+              Actively looking for{" "}
               <strong style={{ color: "var(--sand)", fontWeight: 700 }}>
-                software engineering, data science, AI/ML, and security
+                Summer 2027 software engineering, SDET, AI evaluation, and security/security testing internships
               </strong>
-              {" "}roles — internships and full-time.
+              .
             </p>
             <AboutGraphDoodles />
             <QualityCommandWidget />
